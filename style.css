@@ -1,5 +1,5 @@
 /* have a 3x3 grid roughly centered in the screen */
-.board {
+#board {
     display: grid;
     margin: 25vh auto auto auto;
     width: 27vw;

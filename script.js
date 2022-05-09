@@ -24,7 +24,7 @@ const setBoard = () => {
     // somehow get gameBoard involved
     let gb = document.createElement('div');
     // set class properly
-    gb.setAttribute('class', 'board');
+    gb.setAttribute('id', 'board');
     // add board to body
     document.body.appendChild(gb);
 
@@ -47,28 +47,45 @@ const setBoard = () => {
 const checkWinner = () => {
     // check rows
     let over = false;
-    if((gameBoard.getSpot(0) == gameBoard.getSpot(1) == gameBoard.getSpot(2))
-    || (gameBoard.getSpot(3) == gameBoard.getSpot(4) == gameBoard.getSpot(5))
-    || (gameBoard.getSpot(6) == gameBoard.getSpot(7) == gameBoard.getSpot(8))) {
+    // initial array
+    let normal = [' ', ' ', ' '];
+    // winning arrays
+    let win = ['x', 'x', 'x'];
+    let win2 = ['o', 'o', 'o'];
+    // row arrays
+    let toprow = [gameBoard.getSpot(0), gameBoard.getSpot(1), gameBoard.getSpot(2)];
+    let midrow = [gameBoard.getSpot(3), gameBoard.getSpot(4), gameBoard.getSpot(5)];
+    let bottomrow = [gameBoard.getSpot(6), gameBoard.getSpot(7), gameBoard.getSpot(8)];
+    // column arrays
+    let onecol = [gameBoard.getSpot(0), gameBoard.getSpot(3), gameBoard.getSpot(6)];
+    let twocol = [gameBoard.getSpot(1), gameBoard.getSpot(4), gameBoard.getSpot(7)];
+    let threecol = [gameBoard.getSpot(2), gameBoard.getSpot(5), gameBoard.getSpot(8)];
+    // diagonal arrays
+    let onediag = [gameBoard.getSpot(0), gameBoard.getSpot(4), gameBoard.getSpot(8)];
+    let twodiag = [gameBoard.getSpot(2), gameBoard.getSpot(4), gameBoard.getSpot(6)];
+    // check rows;
+    if(((toprow == win || toprow == win2) && toprow != normal)
+    || ((midrow == win || midrow == win2) && midrow != normal)
+    || ((bottomrow == win || bottomrow == win2) && bottomrow != normal)) {
         over = true;
     }
     // check columns
-    else if((gameBoard.getSpot(0) == gameBoard.getSpot(3) == gameBoard.getSpot(6))
-    || (gameBoard.getSpot(1) == gameBoard.getSpot(4) == gameBoard.getSpot(7))
-    || (gameBoard.getSpot(2) == gameBoard.getSpot(5) == gameBoard.getSpot(8))) {
+    else if(((onecol == win || onecol == win2) && onecol != normal)
+    || ((twocol == win || twocol == win2) && twocol != normal)
+    || ((threecol == win || threecol == win2) && threecol != normal)) {
         over = true;
     }
     // check diagonals
-    else if((gameBoard.getSpot(0) == gameBoard.getSpot(4) == gameBoard.getSpot(8))
-    || (gameBoard.getSpot(2) == gameBoard.getSpot(4) == gameBoard.getSpot(6))) {
+    else if(((onediag == win || onediag == win2) && onediag != normal)
+    || ((twodiag == win || twodiag == win2) && twodiag != normal)) {
         over = true;
     }
     
     if(over) {
-        let b = document.getElementsByClassName('board');
-        b.children.foreach(sq => {
-            sq.style.border = 'none';
-        })
+        const b = document.getElementById('board');
+        for(let i=0; i<b.childNodes.length; i++) {
+            b.children[i].style.border = 'none';
+        }
         b.innerHTML = `${currentPlayer.getName()} + ' wins!`;
     }
     // change the current player to set the proper marker next time
