@@ -1,6 +1,6 @@
 const gameBoard = (() => {
     // 3x3 board
-    let board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
+    let board = new Array(9);
     // function to get spot on the board
     const getSpot = index => board[index];
     // function to change spot on the board
@@ -47,11 +47,14 @@ const setBoard = () => {
 const checkWinner = () => {
     // check rows
     let over = false;
-    // initial array
-    let normal = [' ', ' ', ' '];
     // winning arrays
     let win = ['x', 'x', 'x'];
     let win2 = ['o', 'o', 'o'];
+
+
+    let rows = [];
+    let cols = [];
+    let diags = [];
     // row arrays
     let toprow = [gameBoard.getSpot(0), gameBoard.getSpot(1), gameBoard.getSpot(2)];
     let midrow = [gameBoard.getSpot(3), gameBoard.getSpot(4), gameBoard.getSpot(5)];
@@ -64,6 +67,9 @@ const checkWinner = () => {
     let onediag = [gameBoard.getSpot(0), gameBoard.getSpot(4), gameBoard.getSpot(8)];
     let twodiag = [gameBoard.getSpot(2), gameBoard.getSpot(4), gameBoard.getSpot(6)];
     // check rows;
+    
+
+
     if(((toprow == win || toprow == win2) && toprow != normal)
     || ((midrow == win || midrow == win2) && midrow != normal)
     || ((bottomrow == win || bottomrow == win2) && bottomrow != normal)) {
@@ -102,7 +108,7 @@ document.addEventListener('click', function(e) {
         // local variable for the index of the square in the board
         let i = parseInt(e.target.dataset.index);
         // if it is already marked, don't mark it
-        if(gameBoard.getSpot(i) != ' ') {
+        if(gameBoard.getSpot(i) != undefined) {
             return;
         }
         // set the spot in the board to the current marker
