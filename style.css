@@ -1,0 +1,24 @@
+/* have a 3x3 grid roughly centered in the screen */
+.board {
+    display: grid;
+    margin: 25vh auto auto auto;
+    width: 27vw;
+    height: 27vw;
+    border: 1px solid black;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+/* each square is distinct and holds text inside it */
+.square {
+    border: 1px solid black;
+    background-color: lightgray;
+    text-align: center;
+
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 5em;
+    font-weight: bold;
+    padding-top: 13px;
+}
+/* make squares lighter when hovering over */
+.square:hover {
+    opacity: 0.7;
+}
