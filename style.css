@@ -49,31 +49,20 @@ body {
     background-color: var(--light-navy);
 }
 
-.newplayer {
+.newplayer , .restart {
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
     line-height: 1.5;
-    width: 7vw;
-    height: 7vw;
+    width: 8vw;
+    height: 8vw;
     background-color: var(--navy);
     color: var(--beige);
     border: none;
     border-radius: 100%;
 }
 
-.restart {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 12px;
-    line-height: 1.5;
-    width: 7vw;
-    height: 7vw;
-    background-color: var(--navy);
-    color: var(--beige);
-    border: none;
-    border-radius: 100%;
-}
 
-.newplayer:hover , restart:hover{
+.newplayer:hover , .restart:hover{
     transform: scale(1.05);
 }
 
