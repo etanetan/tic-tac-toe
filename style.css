@@ -12,6 +12,14 @@ body {
     font-family: 'Press Start 2P', cursive;
 
 }
+/* get rid of background of github image and place it below calculator */
+
+img {
+    mix-blend-mode: multiply;
+    height: 8vw;
+    width: 8vw;
+}
+
 /* information at the end of the game */
 #info {
     position: absolute;
@@ -109,7 +117,8 @@ body {
 }
 
 #playerOneDisplay, #playerTwoDisplay {
-    font-size: 3rem;
+    font-size: 2rem;
+    right: 10vw;
 }
 
 #playerTwoButton {
