@@ -144,7 +144,7 @@ document.addEventListener("click", function (e) {
       return;
     }
     // set the spot in the board to the current marker
-    board.setSpot(index, currentPlayer.getName());
+    board.setSpot(index, currentPlayer.getMarket());
     // set the inner html to display the current marker
     e.target.innerHTML = currentPlayer.getMarker();
 
@@ -183,7 +183,7 @@ function changeName() {
   // set display to the value of the name inputted
   const name = playerInput.value;
   // if name is empty, return
-  if (name === "" || (playerTwo && name == p2.getName())) {
+  if (name === "") {
     return;
   }
   // set display to the value of the name inputted
@@ -207,8 +207,8 @@ function changeNameTwo() {
   const playerButton = document.getElementById("playerTwoButton");
   // gather the player two input
   const name = playerInput.value;
-  // if name is empty, return. and if names are the same, return
-  if (name === "" || (playerOne && name == p1.getName())) {
+  // if name is empty, return.
+  if (name === "") {
     return;
   }
   // set display to the value of the name inputted
