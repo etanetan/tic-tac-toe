@@ -220,19 +220,25 @@ function changeNameTwo() {
   // player two has joined the game
   playerTwo = true;
 }
-
+// function to restart the game with the same players
 function restartGame() {
+  // get all squares
   let children = document.getElementById("board").childNodes;
+  // iterate through squares and change the innerHTML to blank instead of "x" or "o"
   for (let i = 0; i < children.length; i++) {
     children[i].innerHTML = "";
   }
-
+  // change all of the squares array to have an empty string instead of a player name
   for (let i = 0; i < 9; i++) {
     board.setSpot(i, "");
   }
-
+  // set the current player to player 1
   currentPlayer = p1;
+  // remove the game over status that is displayed above the board
   document.getElementById("info").innerHTML = "";
+  // set both the game over and tied status to false, as this is a new game
+  over = false;
+  tie = false;
 }
 
 document
