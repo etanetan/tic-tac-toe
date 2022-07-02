@@ -181,7 +181,7 @@ function changeName() {
   // set display to the value of the name inputted
   const name = playerInput.value;
   // if name is empty, return
-  if (name === "") {
+  if (name === "" || (playerTwo && name === p2.getName())) {
     return;
   }
   // set display to the value of the name inputted
@@ -205,8 +205,8 @@ function changeNameTwo() {
   const playerButton = document.getElementById("playerTwoButton");
   // gather the player two input
   const name = playerInput.value;
-  // if name is empty, return
-  if (name === "") {
+  // if name is empty, return. and if names are the same, return
+  if (name === "" || (playerOne && name === p1.getName())) {
     return;
   }
   // set display to the value of the name inputted
