@@ -21,7 +21,7 @@ img {
     flex-direction: column;
     align-items:stretch;
     justify-content: space-between;
-    gap: 6rem;
+    gap: 5rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
