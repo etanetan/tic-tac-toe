@@ -141,7 +141,6 @@ document.addEventListener("click", function (e) {
       e.target.innerHTML = "";
       return;
     }
-    alert(currentPlayer.getMarker());
     // set the spot in the board to the current marker
     board.setSpot(index, currentPlayer.getMarker());
     // set the inner html to display the current marker
