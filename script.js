@@ -43,10 +43,12 @@ const board = (() => {
 
 // player object
 const player = (name, marker) => {
+  this.name = name;
+  this.marker = marker;
   // getter for name
-  const getName = () => name;
+  const getName = () => this.name;
   // getter for marker (either 'x' or 'o')
-  const getMarker = () => marker;
+  const getMarker = () => this.marker;
 
   // return the getters
   return { getName, getMarker };
@@ -181,7 +183,7 @@ function changeName() {
   // set display to the value of the name inputted
   const name = playerInput.value;
   // if name is empty, return
-  if (name === "" || (playerTwo && name === p2.getName())) {
+  if (name === "" || (playerTwo && name == p2.getName())) {
     return;
   }
   // set display to the value of the name inputted
@@ -206,7 +208,7 @@ function changeNameTwo() {
   // gather the player two input
   const name = playerInput.value;
   // if name is empty, return. and if names are the same, return
-  if (name === "" || (playerOne && name === p1.getName())) {
+  if (name === "" || (playerOne && name == p1.getName())) {
     return;
   }
   // set display to the value of the name inputted
