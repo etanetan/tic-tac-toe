@@ -1,10 +1,12 @@
 let gb = document.createElement("div");
+let mid = document.getElementById("middleContainer");
+
 // function to set up the board
 const setBoard = () => {
   // set class properly
   gb.setAttribute("id", "board");
   // add board to body
-  document.body.appendChild(gb);
+  mid.insertBefore(gb, mid.children[1]);
 };
 
 /* OBJECTS */

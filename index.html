@@ -8,32 +8,49 @@
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <div class="info-holder">
-        <div id="info"></div>
-    </div>
-    
-    <div class="button-holder">
-        <button class="restart" onClick="restartGame();">Restart Game</button>
-        <!-- image that links to my github profile -->
-        <a href="http://github.com/etanetan">
-            <img src="githubimg.png" alt="Github Image">
-        </a>
-        <button class="newplayer" onClick="window.location.reload();">New Players</button>
+
+    <div id="mainContainer">
+
+        <div class="info-holder">
+            <div id="info"></div>
+        </div>
+
+        <div id="middleContainer">
+            <div class="formHolder">
+                <input type="text" id="playerOne" class="player" name="player_one" maxlength="8" placeholder="Player One">
+                <button type="button" class="player" id="playerOneButton" onClick="changeName()">READY!</button>
+                <div class="player" id="playerOneDisplay"></div>
+            </div>
+
+            <div class="formholder" id="two">
+                <input type="text" id="playerTwo" class="player" name="player_two" maxlength="8" placeholder="Player Two" required>
+                <button type="button" class="player" id="playerTwoButton" onClick="changeNameTwo()">READY!</button>
+                <div class="player" id="playerTwoDisplay"></div>
+            </div>
+        </div>
+
+        <div class="button-holder">
+            <button class="restart" onClick="restartGame();">Restart Game</button>
+            <!-- image that links to my github profile -->
+            <a href="http://github.com/etanetan">
+                <img src="githubimg.png" alt="Github Image">
+            </a>
+            <button class="newplayer" onClick="window.location.reload();">New Players</button>
+        </div>
+
+
+
     </div>
 
-    <div class="formHolder">
-        <input type="text" id="playerOne" class="player" name="player_one" maxlength="8" placeholder="Player One">
-        <button type="button" class="player" id="playerOneButton" onClick="changeName()">READY!</button>
-        <div class="player" id="playerOneDisplay"></div>
-    </div>
     
     
     
-    <div class="formholder" id="two">
-        <input type="text" id="playerTwo" class="player" name="player_two" maxlength="8" placeholder="Player Two" required>
-        <button type="button" class="player" id="playerTwoButton" onClick="changeNameTwo()">READY!</button>
-        <div class="player" id="playerTwoDisplay"></div>
-    </div>
+
+    
+    
+    
+    
+    
     
     
 
