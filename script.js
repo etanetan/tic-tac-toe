@@ -43,12 +43,10 @@ const board = (() => {
 
 // player object
 const player = (name, marker) => {
-  this.name = name;
-  this.marker = marker;
   // getter for name
-  const getName = () => this.name;
+  const getName = () => name;
   // getter for marker (either 'x' or 'o')
-  const getMarker = () => this.marker;
+  const getMarker = () => marker;
 
   // return the getters
   return { getName, getMarker };
@@ -143,6 +141,7 @@ document.addEventListener("click", function (e) {
       e.target.innerHTML = "";
       return;
     }
+    alert(currentPlayer.getMarker());
     // set the spot in the board to the current marker
     board.setSpot(index, currentPlayer.getMarker());
     // set the inner html to display the current marker
