@@ -56,7 +56,7 @@ img {
 .square:hover {
     background-color: var(--light-navy);
 }
-
+/* buttons at the bottom of the page are the same size, color, and text color and shape */
 .newplayer , .restart {
     font-family: 'Press Start 2P', cursive;
     font-size: 12px;
@@ -69,11 +69,11 @@ img {
     border-radius: 100%;
 }
 
-
-.newplayer:hover , .restart:hover{
+/* all buttons at the bottom of the screen become larger when hovering */
+.newplayer:hover , .restart:hover , img:hover{
     transform: scale(1.05);
 }
-
+/* button container that flexes the items and has them evenly spaced along the bottom */
 .button-holder {
     display: flex;
     justify-content: center;
@@ -85,7 +85,7 @@ img {
 
 
 
-
+/* standard class for the player inputs, displays, and buttons */
 .player {
     width: 10vw;
     padding: 10px 10px 10px 10px;
@@ -94,38 +94,38 @@ img {
     border: none;
     font-family: 'Press Start 2p', cursive;
 }
-
+/* positioned below the input, has a border */
 #playerOneButton {
     top: 45vh;
     border: 2px solid var(--navy);
     border-radius: 2rem;
 }
+/* the buttons swap the background and text color on hover */
 #playerOneButton:hover , #playerTwoButton:hover {
     background-color: var(--navy);
     color: var(--beige);
-
 }
-
+/* the second player's input is on the right side of the board */
 #playerTwo {
     right: 10vw;
     left: auto;
 }
-
+/* this display of player two's name is further in from the right of the screen */
 #playerTwoDisplay {
     right: 15vw;
     left: auto;
 }
-
+/* both displays have the same font size */
 #playerOneDisplay, #playerTwoDisplay {
     font-size: 2rem;
     right: 10vw;
 }
-
+/* player two button (right side) has same as player 1 button */
 #playerTwoButton {
     border: 2px solid var(--navy);
     border-radius: 2rem;
 }
-
+/* form holder is flexed on both sides and has adequate spacing */
 .formHolder, #two {
     display: flex;
     position: absolute;
