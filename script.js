@@ -1,5 +1,22 @@
+// div for the gameboard in the center
 let gb = document.createElement("div");
+// div that contains the player inputs and the gameboard
 let mid = document.getElementById("middleContainer");
+
+// first player and sign
+let p1;
+// second player and sign
+let p2;
+// current player variable
+let currentPlayer;
+// is the game over
+let over = false;
+// did the game end in a tie
+let tie = false;
+// has player one readied up
+let playerOne = false;
+// has player two readied up
+let playerTwo = false;
 
 // function to set up the board
 const setBoard = () => {
@@ -128,6 +145,11 @@ const checkWinner = () => {
   }
 };
 
+const displayPlayerTurn = () => {
+  const info = document.getElementById("info");
+  info.innerHTML = `It is ${currentPlayer.getName()}'s turn`;
+};
+
 // event listener to track squares getting clicked on
 document.addEventListener("click", function (e) {
   // if the game is over or if one or more player names have not submitted, do nothing
@@ -138,43 +160,39 @@ document.addEventListener("click", function (e) {
     // local variable for the index of the square in the board
     let index = e.target.dataset.index;
 
-    // if it is already marked, just unmark it (redo)
-    if (e.target.innerHTML == "x" || e.target.innerHTML == "o") {
+    // if it is not marked, then mark it
+    if (e.target.innerHTML != "x" && e.target.innerHTML != "o") {
+      // set the spot in the board to the current marker
+      board.setSpot(index, currentPlayer.getMarker());
+      // set the inner html to display the current marker
+      e.target.innerHTML = currentPlayer.getMarker();
+
+      // check if the game is over
+      checkWinner();
+      switchPlayers();
+    } else {
+      // spot has already been marked, this is a redo
+      // players aren't switched
+      board.setSpot(index, "");
       e.target.innerHTML = "";
+      switchPlayers();
       return;
     }
-    // set the spot in the board to the current marker
-    board.setSpot(index, currentPlayer.getMarker());
-    // set the inner html to display the current marker
-    e.target.innerHTML = currentPlayer.getMarker();
-
-    // check if the game is over
-    checkWinner();
-    switchPlayers();
   }
 });
-
+// function to switch which player's turn it is
 const switchPlayers = () => {
+  if (over) {
+    return;
+  }
   if (currentPlayer == p1) {
     currentPlayer = p2;
   } else {
     currentPlayer = p1;
   }
+  setTimeout(displayPlayerTurn, 700);
 };
-
-// first player and sign
-let p1;
-// second player and sign
-let p2;
-// is the game over
-let over = false;
-// did the game end in a tie
-let tie = false;
-// has player one readied up
-let playerOne = false;
-// has player two readied up
-let playerTwo = false;
-
+// function to add the name of the first player
 function changeName() {
   // select player one input
   const playerInput = document.getElementById("playerOne");
@@ -187,7 +205,7 @@ function changeName() {
     return;
   }
   // set display to the value of the name inputted
-  document.getElementById("playerOneDisplay").innerHTML = name;
+  document.getElementById("playerDisplayOne").innerHTML = name + "\t(x)";
   // create the player with the inputted name and the corresponding sign
   p1 = player(name, "x");
   // player one is the current player
@@ -198,8 +216,11 @@ function changeName() {
   playerButton.style.display = "none";
   // player one has joined the game
   playerOne = true;
+  if (playerTwo) {
+    setTimeout(displayPlayerTurn, 700);
+  }
 }
-
+// function to change the name of the second player
 function changeNameTwo() {
   // select player two input
   const playerInput = document.getElementById("playerTwo");
@@ -212,7 +233,7 @@ function changeNameTwo() {
     return;
   }
   // set display to the value of the name inputted
-  document.getElementById("playerTwoDisplay").innerHTML = name;
+  document.getElementById("playerDisplayTwo").innerHTML = name + "\t(o)";
   // create the player with the inputted name and the corresponding sign
   p2 = player(name, "o");
   // get rid of the input and the button
@@ -221,6 +242,9 @@ function changeNameTwo() {
   playerButton.style.display = "none";
   // player two has joined the game
   playerTwo = true;
+  if (playerOne) {
+    setTimeout(displayPlayerTurn, 700);
+  }
 }
 // function to restart the game with the same players
 function restartGame() {

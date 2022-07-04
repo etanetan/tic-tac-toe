@@ -99,7 +99,7 @@ img {
 
 /* standard class for the player inputs, displays, and buttons */
 .player {
-    width: 12vw;
+    width: 20vw;
     padding: 10px 10px 10px 10px;
     color: var(--navy);
     background-color: var(--beige);
@@ -117,7 +117,8 @@ img {
     color: var(--beige);
 }
 /* both displays have the same font size */
-#playerOneDisplay, #playerTwoDisplay {
+#playerDisplayOne , #playerDisplayTwo {
+    text-align: center;
     font-size: 1.5rem;
 }
 /* player two button (right side) has same as player 1 button */
