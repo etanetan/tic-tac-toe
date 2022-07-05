@@ -184,8 +184,7 @@ document.addEventListener("click", function (e) {
 const switchPlayers = () => {
   if (over) {
     return;
-  }
-  if (currentPlayer == p1) {
+  } else if (currentPlayer == p1) {
     currentPlayer = p2;
   } else {
     currentPlayer = p1;
